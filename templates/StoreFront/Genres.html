@@ -1,10 +1,5 @@
 <!DOCTYPE html>
-<html>
-<head lang="en">
-    <meta charset="UTF-8">
-    <title></title>
-</head>
-<body>
-
-</body>
-</html>
+    {% for book in genres_book %}
+        <a href="#"><img src="{{ book.book_logo }}"</a>
+        <a href="#"><h3>{{ book.book_Name }}</h3>>
+    {% endfor%}
