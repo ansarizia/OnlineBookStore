@@ -17,7 +17,11 @@ Including another URLconf
 from django.conf.urls import url
 from . import views
 urlpatterns = [
-    url(r'^$', views.index, name='index' )
+    # /BookStore/
+    url(r'^$', views.index, name='index' ),
+
+    # /BookStore/Book_id(21)
+    url(r'^(?P<Book_id>[0-9]+)/$',views.BuyNow, name='BuyNow'),
 
 
 
