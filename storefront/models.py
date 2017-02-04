@@ -19,9 +19,11 @@ class Books(models.Model):
     author = models.CharField(max_length=200)
     book_logo = models.CharField(max_length=250)
     book_genre = models.ForeignKey(Genres, on_delete=models.CASCADE)
-    #book_language = models.ForeignKey(Languages, on_delete=models.CASCADE)
+    book_language = models.ForeignKey(Languages, on_delete=models.CASCADE)
+    # book_language = models.CharField(max_length=200, default="English")
     book_desc = models.CharField(max_length=400)
     publish_date = models.DateField()
+    book_price = models.CharField(max_length=20, default="100")
 
 
     def __str__(self):
