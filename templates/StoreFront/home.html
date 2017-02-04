@@ -19,19 +19,9 @@
     <!-- end header -->
     <dl id="browse">
       <dt>Full Category Lists</dt>
-      <dd class="first"><a href="#">Action &amp; Adventure</a></dd>
-      <dd><a href="#">Anime &amp; Manga</a></dd>
-      <dd><a href="#">Art House &amp; International</a></dd>
-      <dd><a href="#">Classics</a></dd>
-      <dd><a href="#">Comedy</a></dd>
-      <dd><a href="#">Cult Books</a></dd>
-      <dd><a href="#">Drama</a></dd>
-      <dd><a href="#">New &amp; Future Releases</a></dd>
-      <dd><a href="#">Horror</a></dd>
-      <dd><a href="#">Musicals</a></dd>
-      <dd><a href="#">Mystery &amp; Suspense</a></dd>
-      <dd><a href="#">Science Fiction &amp; Fantasy</a></dd>
-      <dd class="last"><a href="#">Westerns</a></dd>
+        {% for book in all_books %}
+            <a href="#"><h2>{{ book.book_genre }}</h2>>
+        {% endfor %}
       <dt>Search Your Favourite Book</dt>
       <dd class="searchform">
         <form action="#" method="get">
@@ -55,10 +45,10 @@
           {% for book in all_books %}
               {% if book.pk|divisibleby:2 %}
                     <div class="leftbox">
-                        <a href="{% url 'BuyNow' book.id %}"><img src="{{ book.Book_logo }}" width="93" height="95" alt="photo 1" class="left" /></a>
+                        <a href="{% url 'BuyNow' book.id %}"><img src="{{ book.book_logo }}" width="93" height="95" alt="photo 1" class="left" /></a>
                         <!-- Previously the above line was same as Below line , but now we have changed it to hardcoded URL using name variable from storefront\urls.py file-->
                         <!-- <a href="/BookStore/{{ book.id }}/"><img src="{{ book.Book_logo }}" width="93" height="95" alt="photo 1" class="left" /></a> -->
-                        <a href="{% url 'BuyNow' book.id %}"><h3>{{ book.Book_Name }}</h3></a>
+                        <a href="{% url 'BuyNow' book.id %}"><h3>{{ book.book_Name }}</h3></a>
                         <p><b>Price:</b> <b>$225.97</b> &amp; eligible for FREE Super Saver Shipping on orders over <b>$195</b>.</p>
                         <p><b>Availability:</b> Usually ships within 24 hours</p>
                         <p class="readmore"><a href="{% url 'BuyNow' book.id %}">BUY <b>NOW</b></a></p>
@@ -67,8 +57,8 @@
                     <!-- end left Box -->
               {% else %}
                     <div class="rightbox">
-                        <a href="{% url 'BuyNow' book.id %}"><img src="{{ book.Book_logo }}" width="93" height="95" alt="photo 1" class="left" /></a>
-                        <a href="{% url 'BuyNow' book.id %}"><h3>{{ book.Book_Name }}</h3></a>
+                        <a href="{% url 'BuyNow' book.id %}"><img src="{{ book.book_logo }}" width="93" height="95" alt="photo 1" class="left" /></a>
+                        <a href="{% url 'BuyNow' book.id %}"><h3>{{ book.book_Name }}</h3></a>
                         <p><b>Price:</b> <b>$225.97</b> &amp; eligible for FREE Super Saver Shipping on orders over <b>$195</b>.</p>
                         <p><b>Availability:</b> Usually ships within 24 hours</p>
                         <p class="readmore"><a href="{% url 'BuyNow' book.id %}">BUY <b>NOW</b></a></p>
