@@ -23,6 +23,9 @@ urlpatterns = [
     # /BookStore/Book_id(21)
     url(r'^(?P<Book_id>[0-9]+)/$',views.BuyNow, name='BuyNow'),
 
+    #/BookStore/Fiction
+    url(r'^Fiction/$',views.Details,name='Details')
+
 
 
 ]
