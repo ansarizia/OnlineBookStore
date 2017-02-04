@@ -17,5 +17,10 @@ def BuyNow(request, Book_id):
     context = {'book' : book}
     return render(request,'StoreFront/BuyNow.html',context)
 
-def display_books():
-    pass
+def Details(request):
+    genres_book = Books.objects.all()
+    return render(request,'StoreFront/Genres.html',{'genres_book' : genres_book})
+
+
+
+
