@@ -5,7 +5,8 @@ from .models import Books
 
 def index(request):
     all_books = Books.objects.all()
-    context = {'all_books' : all_books}
+    #catalogue = Catalogue.objects.all()
+    context = {'all_books' : all_books }
     return render(request,'StoreFront/home.html',context)
 
 def BuyNow(request, Book_id):
