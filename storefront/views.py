@@ -12,9 +12,10 @@ def index(request):
 def BuyNow(request, Book_id):
     try:
         book = Books.objects.get(pk=Book_id)
+        all_books = Books.objects.all()
     except Books.DoesNotExist:
         raise Http404("Book is not available")
-    context = {'book' : book}
+    context = {'book' : book, 'all_books' : all_books}
     return render(request,'StoreFront/BuyNow.html',context)
 
 def Details(request):

@@ -1,2 +1,100 @@
-<h3><font color="red">{{ book.book_Name }}</font></h3>
-<a href="#"><img src="{{ book.book_logo }}"  width="200" height="400" alt="Harry Potter cd" /></a> <a href="#">
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/html">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Book Store</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    {% load static %}
+<link href="{% static "style.css" %}" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="wrapper">
+  <div id="inner">
+      <div id="header">
+          <h4><font size="5" >{{ book.book_Name }}</font></h4>
+      </div>
+       <dl id="browse">
+           <a href="#"><img src="{{ book.book_logo }}"  width="200" height="400" alt="Harry Potter cd" /></a>
+       </dl>
+
+  </div>
+    <div id="body">
+        <div class="inner">
+            <p>Author : <a href="#"> {{ book.author }}</a></p>
+            <p>Genre : <a href="#"> {{ book.book_genre }}</a></p>
+            <p> Language : <a href="#"> {{ book.book_language }} </a> </p>
+            <p> Publishing :  {{ book.publish_date }} </p>
+            <p> Price : {{ book.book_price }}  </p>
+            <p class="selector-add"><a href="#">Add to <b>Cart</b></a></p>
+        </div>
+        <div id="branding"><p>Description : {{ book.book_desc }}</p></div>
+    </div>
+    <div class="clear"></div>
+    <div id="branding"><h2>Similar Books</h2><div>
+    #Similar to be shown
+        <div id="body">
+            <div class="inner">
+                {% for book in all_books %}
+                    {% if book.pk|divisibleby:2 %}
+                        <div class="leftbox">
+                        <a href="{% url 'BuyNow' book.id %}">
+                            <img src="{{ book.book_logo }}" width="93" height="95" alt="photo 1" class="left"/>
+                        </a>
+                        <!-- Previously the above line was same as Below line , but now we have changed it to hardcoded URL using name variable from storefront\urls.py file-->
+
+                        <a href="{% url 'BuyNow' book.id %}">
+                            <h3>{{ book.book_Name }}</h3>
+                        </a>
+                        <p>
+                            <b>Price:</b> <b>{{ book.book_price }}</b>
+                        </p>
+                        <p>
+                            <b>Availability:</b> Usually ships within 24 hours
+                        </p>
+                        <p class="readmore">
+                            <a href="{% url 'BuyNow' book.id %}">BUY <b>NOW</b>
+                            </a></p>
+                        <div class="clear"></div>
+                    </div>
+                    <!-- end left Box -->
+              {% else %}
+                    <div class="rightbox">
+                        <a href="{% url 'BuyNow' book.id %}">
+                            <img src="{{ book.book_logo }}" width="93" height="95" alt="photo 1" class="left"/>
+                        </a>
+                        <a href="{% url 'BuyNow' book.id %}">
+                            <h3>{{ book.book_Name }}</h3>
+                        </a>
+                        <p>
+                            <b>Price:</b> <b>{{ book.book_price }}</b>
+                        </p>
+
+                        <p>
+                            <b>Availability:</b> Usually ships within 24 hours
+                        </p>
+
+                        <p class="readmore">
+                            <a href="{% url 'BuyNow' book.id %}">BUY <b>NOW</b></a>
+                        </p>
+                        <div class="clear"></div>
+                    </div>
+                    <!-- end right box -->
+              {% endif %}
+          {% endfor %}
+      </div>
+      <!-- end .inner -->
+    </div>
+    <!-- end body -->
+    <div class="clear"></div>
+</div>
+</body>
+
+
+
+
+
+
+
+
+</head>
+</html>
